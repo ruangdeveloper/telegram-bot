@@ -10,7 +10,7 @@ const WORDPRESS_URL = process.env.WORDPRESS_URL
 const WEBHOOK_HOST = process.env.WEBHOOK_HOST
 
 const Bot = new Telegraf(BOT_TOKEN)
-const secretPath = `/api/webhook/${bot.secretPathComponent()}`
+const secretPath = `/api/webhook/${Bot.secretPathComponent()}`
 
 Bot.start((ctx) => {
     console.log(ctx)
