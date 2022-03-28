@@ -61,7 +61,7 @@ app.post("/api/webhook", async (req, res) => {
             })
             await Bot.sendMessage(message.chat.id, text, options)
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
     })
 })
