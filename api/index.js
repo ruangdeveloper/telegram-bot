@@ -22,11 +22,13 @@ app.get("/api/webhook/set", (req, res) => {
 })
 
 app.post("/api/webhook", async (req, res) => {
+
     Bot.setWebHook(WEBHOOK_URL).then(() => {
-        // nothing
+        console.log("webhook registered")
     }).catch((err) => {
         console.log(err)
     })
+    
     Bot.onText(/\/start/, async (message) => {
         try {
             const options = {
@@ -43,24 +45,24 @@ app.post("/api/webhook", async (req, res) => {
         }
     })
 
-    Bot.onText(/\/terbaru/, async (message) => {
-        try {
-            const options = {
-                reply_to_message_id: message.message_id,
-                parse_mode: "HTML",
-                disable_web_page_preview: false
-            }
+    // Bot.onText(/\/terbaru/, async (message) => {
+    //     try {
+    //         const options = {
+    //             reply_to_message_id: message.message_id,
+    //             parse_mode: "HTML",
+    //             disable_web_page_preview: false
+    //         }
 
-            const axiosResponse = await axios.get(WORDPRESS_URL + "/wp-json/wp/v2/posts?per_page=3")
-            let text = ""
-            axiosResponse.data.forEach((post) => {
-                text = text + post.title.rendered + "\n" + post.link + "\n\n"
-            })
-            await Bot.sendMessage(message.chat.id, text, options)
-        } catch (error) {
-            console.log(error.message)
-        }
-    })
+    //         const axiosResponse = await axios.get(WORDPRESS_URL + "/wp-json/wp/v2/posts?per_page=3")
+    //         let text = ""
+    //         axiosResponse.data.forEach((post) => {
+    //             text = text + post.title.rendered + "\n" + post.link + "\n\n"
+    //         })
+    //         await Bot.sendMessage(message.chat.id, text, options)
+    //     } catch (error) {
+    //         console.log(error.message)
+    //     }
+    // })
 })
 
 module.exports = app
