@@ -27,9 +27,9 @@ app.post("/api/webhook", async (req, res) => {
     Bot.setWebHook(WEBHOOK_URL).then(() => {
         console.log("webhook registered")
     }).catch((err) => {
-        console.log(err)
+        console.log(err.message)
     })
-    
+
     Bot.onText(/\/start/, async (message) => {
         try {
             const options = {
