@@ -15,7 +15,7 @@ app.get("/api", (req, res) => {
     res.send("There is nothing here")
 })
 
-app.post("/api/webhook/set", (req, res) => {
+app.get("/api/webhook/set", (req, res) => {
     Bot.setWebHook(WEBHOOK_URL).then(() => {
         res.send("Webhook set.")
     }).catch((err) => {
@@ -25,6 +25,11 @@ app.post("/api/webhook/set", (req, res) => {
 })
 
 app.post("/api/webhook", async (req, res) => {
+    Bot.setWebHook(WEBHOOK_URL).then(() => {
+        // nothing
+    }).catch((err) => {
+        console.log(err)
+    })
     Bot.onText(/\/start/, (message) => {
         try {
             const options = {
