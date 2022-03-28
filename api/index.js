@@ -1,3 +1,5 @@
+process.env.NTBA_FIX_319 = "1"
+
 const express = require("express")
 const process = require("process")
 const axios = require("axios").default
