@@ -30,7 +30,7 @@ app.post("/api/webhook", async (req, res) => {
     }).catch((err) => {
         console.log(err)
     })
-    Bot.onText(/\/start/, (message) => {
+    Bot.onText(/\/start/, async (message) => {
         try {
             const options = {
                 reply_to_message_id: message.message_id,
@@ -46,7 +46,7 @@ app.post("/api/webhook", async (req, res) => {
         }
     })
 
-    Bot.onText(/\/terbaru/, (message) => {
+    Bot.onText(/\/terbaru/, async (message) => {
         try {
             const options = {
                 reply_to_message_id: message.message_id,
