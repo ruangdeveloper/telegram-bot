@@ -8,14 +8,17 @@ const { Telegraf } = require("telegraf")
 const BOT_TOKEN = process.env.BOT_TOKEN
 const WORDPRESS_URL = process.env.WORDPRESS_URL
 const WEBHOOK_HOST = process.env.WEBHOOK_HOST
+
 const Bot = new Telegraf(BOT_TOKEN)
+const secretPath = `/api/webhook/${bot.secretPathComponent()}`
 
 Bot.start((ctx) => {
-    ctx.replyWithHTML('<b>Selamat Datang</b>')
+    console.log(ctx)
+    ctx.reply("Halo")
 })
 
-Bot.telegram.setWebhook(WEBHOOK_HOST + "/api/webhook/" + Bot.secretPathComponent())
+Bot.telegram.setWebhook(WEBHOOK_HOST + secretPath)
 
-app.use(Bot.webhookCallback("/api/webhook" + Bot.secretPathComponent()))
+app.use(Bot.webhookCallback(secretPath))
 
 module.exports = app
