@@ -8,7 +8,7 @@ const WORDPRESS_URL = process.env.WORDPRESS_URL
 const WEBHOOK_URL = process.env.WEBHOOK_URL
 const Bot = new TeleramBot(BOT_TOKEN)
 
-app.get("/makan", (req, res) => {
+app.get("/api", (req, res) => {
     res.send("There is nothing here")
 })
 
