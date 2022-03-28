@@ -7,7 +7,6 @@ const WEBHOOK_URL = process.env.WEBHOOK_URL
 
 const Bot = new TeleramBot(BOT_TOKEN, {
     polling: true,
-    webHook: WEBHOOK_URL
 })
 
 app.get("/api", (req, res) => {
@@ -15,6 +14,9 @@ app.get("/api", (req, res) => {
 })
 
 app.post("/api/webhook", (req, res) => {
+    
+    Bot.setWebHook(WEBHOOK_URL).then(() => console.log("webhook set.")).catch((err) => console.log("webhook failed: " + err.message))
+    
     Bot.onText(/\/start/, async (message) => {
         const options = {
             reply_to_message_id: message.message_id,
