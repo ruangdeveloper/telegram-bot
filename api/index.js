@@ -1,7 +1,6 @@
-process.env.NTBA_FIX_319 = "1"
-
-const express = require("express")
 const process = require("process")
+process.env.NTBA_FIX_319 = "1"
+const express = require("express")
 const axios = require("axios").default
 const app = express()
 const TeleramBot = require("node-telegram-bot-api")
