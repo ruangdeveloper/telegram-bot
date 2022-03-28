@@ -1,0 +1,17 @@
+{
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "description": "Ruang Developer Telegram Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./api/index.js"
+  },
+  "keywords": [
+    "Bot"
+  ],
+  "author": "Rizky Kurniawan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
