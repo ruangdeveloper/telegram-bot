@@ -6,10 +6,9 @@ const TeleramBot = require("node-telegram-bot-api")
 const BOT_TOKEN = process.env.BOT_TOKEN
 const WORDPRESS_URL = process.env.WORDPRESS_URL
 const WEBHOOK_URL = process.env.WEBHOOK_URL
-
 const Bot = new TeleramBot(BOT_TOKEN)
 
-app.get("/api", (req, res) => {
+app.get("/", (req, res) => {
     res.send("There is nothing here")
 })
 
