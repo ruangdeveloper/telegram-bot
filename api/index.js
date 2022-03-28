@@ -57,7 +57,7 @@ app.post("/api/webhook", async (req, res) => {
             const axiosResponse = await axios.get(WORDPRESS_URL + "/wp-json/wp/v2/posts?per_page=3")
             let text = ""
             axiosResponse.data.forEach((post) => {
-                text = text + post.title.rendered + "<br>" + post.link + "<br><br>"
+                text = text + post.title.rendered + "\n" + post.link + "\n\n"
             })
             await Bot.sendMessage(message.chat.id, text, options)
         } catch (error) {
