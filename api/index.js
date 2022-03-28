@@ -46,7 +46,7 @@ app.post("/api/webhook", async (req, res) => {
         }
     })
 
-    Bot.onText(/\/terbaru/, async (message) => {
+    Bot.onText(/\/terbaru/, (message) => {
         try {
             const options = {
                 reply_to_message_id: message.message_id,
