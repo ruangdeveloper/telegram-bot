@@ -49,9 +49,9 @@ Bot.command("terbaru", async (ctx) => {
 // Only bot admin can access this commands
 Bot.command("chatinfo", (ctx) => {
     try {
-        if (BOT_ADMIN_USERNAME.split(',').includes(ctx.message.chat.username)){
-            ctx.reply(JSON.stringify(ctx.message.chat))
-        }
+        // if (BOT_ADMIN_USERNAME.split(',').includes(ctx.message.chat.username)){
+        // }
+        ctx.reply(JSON.stringify(ctx.message))
     } catch (error) {
         ctx.reply("maaf sepertinya sedang terjadi kesalahan", {
             reply_to_message_id: ctx.message.message_id
