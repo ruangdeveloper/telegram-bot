@@ -76,8 +76,6 @@ Bot.command("probe_group", (ctx) => {
 
 Bot.telegram.setWebhook(WEBHOOK_HOST + secretPath)
 
-app.use(Bot.webhookCallback(secretPath))
-
 app.post("/api/to-admin", (req, res) => {
     try {
         Bot.telegram.sendMessage(BOT_ADMIN_ID, JSON.stringify(req.body))
@@ -86,5 +84,7 @@ app.post("/api/to-admin", (req, res) => {
         console.log(error)
     }
 })
+
+app.use(Bot.webhookCallback(secretPath))
 
 module.exports = app
