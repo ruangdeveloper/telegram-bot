@@ -79,10 +79,8 @@ Bot.telegram.setWebhook(WEBHOOK_HOST + secretPath)
 app.use(Bot.webhookCallback(secretPath))
 
 app.post("/api/to-admin", (req, res) => {
-    Bot.telegram.setWebhook(WEBHOOK_HOST + secretPath)
     try {
         Bot.telegram.sendMessage(BOT_ADMIN_ID, 'Halo Rizky')
-        Bot.launch()
         res.send('sent')
     } catch (error) {
         console.log(error)
