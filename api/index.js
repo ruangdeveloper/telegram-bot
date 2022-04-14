@@ -8,6 +8,7 @@ const BOT_TOKEN = process.env.BOT_TOKEN
 const WORDPRESS_URL = process.env.WORDPRESS_URL
 const WEBHOOK_HOST = process.env.WEBHOOK_HOST
 const BOT_ADMIN_USERNAME = process.env.BOT_ADMIN_USERNAME
+const BOT_ADMIN_ID = process.env.BOT_ADMIN_ID
 
 const Bot = new Telegraf(BOT_TOKEN)
 const secretPath = `/api/webhook/${BOT_TOKEN}`
@@ -47,11 +48,24 @@ Bot.command("terbaru", async (ctx) => {
 
 
 // Only bot admin can access this commands
-Bot.command("chatinfo", (ctx) => {
+Bot.command("probe_me", (ctx) => {
     try {
-        // if (BOT_ADMIN_USERNAME.split(',').includes(ctx.message.chat.username)){
-        // }
-        ctx.reply(JSON.stringify(ctx.message))
+        if (BOT_ADMIN_USERNAME.split(",").includes(ctx.message.chat.username)) {
+            ctx.reply(JSON.stringify(ctx.message.chat))
+        }
+    } catch (error) {
+        ctx.reply("maaf sepertinya sedang terjadi kesalahan", {
+            reply_to_message_id: ctx.message.message_id
+        })
+        console.log(error)
+    }
+})
+
+Bot.command("probe_group", (ctx) => {
+    try {
+        if (BOT_ADMIN_ID.split(",").includes(ctx.from.id)) {
+            ctx.reply(JSON.stringify(ctx.message.chat))
+        }
     } catch (error) {
         ctx.reply("maaf sepertinya sedang terjadi kesalahan", {
             reply_to_message_id: ctx.message.message_id
