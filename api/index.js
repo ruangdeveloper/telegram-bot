@@ -50,7 +50,7 @@ Bot.command("terbaru", async (ctx) => {
 // Only bot admin can access this commands
 Bot.command("probe_me", (ctx) => {
     try {
-        if (BOT_ADMIN_USERNAME.split(",").includes(ctx.message.chat.username)) {
+        if (ctx.message.chat.username == BOT_ADMIN_USERNAME) {
             ctx.reply(JSON.stringify(ctx.message.chat))
         }
     } catch (error) {
@@ -63,7 +63,7 @@ Bot.command("probe_me", (ctx) => {
 
 Bot.command("probe_group", (ctx) => {
     try {
-        if (BOT_ADMIN_ID.split(",").includes(ctx.from.id)) {
+        if (ctx.from.id == BOT_ADMIN_ID) {
             ctx.reply(JSON.stringify(ctx.message.chat))
         }
     } catch (error) {
