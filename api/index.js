@@ -63,10 +63,9 @@ Bot.command("probe_me", (ctx) => {
 
 Bot.command("probe_group", (ctx) => {
     try {
-        // if (BOT_ADMIN_ID.split(",").includes(ctx.from.id)) {
-        //     ctx.reply(JSON.stringify(ctx.message.chat))
-        // }
-        ctx.reply(JSON.stringify(ctx.from.id))
+        if (BOT_ADMIN_ID.split(",").includes(ctx.from.id)) {
+            ctx.reply(JSON.stringify(ctx.message.chat))
+        }
     } catch (error) {
         ctx.reply("maaf sepertinya sedang terjadi kesalahan", {
             reply_to_message_id: ctx.message.message_id
